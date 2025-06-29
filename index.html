@@ -22,9 +22,8 @@
       padding: 20px;
     }
 
-    h1, h2 {
-      font-size: 38px;
-      font-weight: bold;
+    .options {
+      margin-top: 20px;
     }
 
     .options button {
@@ -35,6 +34,8 @@
       border-radius: 10px;
       background: #ffcccc;
       cursor: pointer;
+      transition: 0.3s;
+      font-family: inherit;
     }
 
     .options button:hover {
@@ -45,22 +46,31 @@
       display: none;
     }
 
+    h1, h2 {
+      font-size: 38px;
+      font-weight: bold;
+      font-family: inherit;
+    }
+
     .video-container {
       width: 100%;
-      max-width: 420px;
+      max-width: 480px;
       aspect-ratio: 9 / 16;
       margin: 0 auto;
       background-color: #fff4db;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transform: scale(1.3); /* Zoom in */
+      display: block;
       pointer-events: none;
     }
 
@@ -84,6 +94,7 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      font-family: inherit;
     }
 
     .controls button:hover {
@@ -160,7 +171,11 @@
     }
 
     function togglePlay() {
-      video.paused ? video.play() : video.pause();
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
     }
 
     function toggleMute() {
@@ -168,13 +183,16 @@
     }
 
     function seekVideo(val) {
-      video.currentTime = (val / 100) * video.duration;
+      const seekTo = (val / 100) * video.duration;
+      video.currentTime = seekTo;
     }
 
     video.addEventListener('timeupdate', () => {
-      seekBar.value = (video.currentTime / video.duration) * 100;
+      const progress = (video.currentTime / video.duration) * 100;
+      seekBar.value = progress;
     });
   </script>
 </body>
 </html>
+
 
