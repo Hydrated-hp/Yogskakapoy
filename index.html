@@ -54,28 +54,32 @@
 
     .video-container {
       width: 100%;
-      max-width: 420px;
+      max-width: 480px;
+      aspect-ratio: 9 / 16;
       margin: 0 auto;
       background-color: #fff4db;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     video {
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
       display: block;
       pointer-events: none;
     }
 
     .controls {
-      margin-top: 12px;
+      background: #fff6e0;
+      padding: 10px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-family: inherit;
     }
 
     .buttons {
@@ -84,8 +88,8 @@
 
     .controls button {
       margin: 0 10px;
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 8px 18px;
+      font-size: 14px;
       background: #ffe0e0;
       border: none;
       border-radius: 6px;
@@ -120,6 +124,10 @@
       h1, h2 {
         font-size: 24px;
       }
+
+      .video-container {
+        max-width: 95vw;
+      }
     }
   </style>
 </head>
@@ -136,7 +144,7 @@
   <div id="popup" class="container hidden">
     <h2>SYEMPRE IKAW! 🫶</h2>
     <div class="video-container">
-      <video id="crushVid" autoplay playsinline>
+      <video id="crushVid" autoplay playsinline muted>
         <source src="crush_video.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
